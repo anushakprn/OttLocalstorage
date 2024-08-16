@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #202020;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 320px;
+        }
+
+        .login-container h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .login-container p {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group select, 
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #2b2b2b;
+            color: #fff;
+        }
+
+        .btn {
+            background-color: #ff6600;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .alternate-login-options {
+            margin-top: 20px;
+        }
+
+        .alternate-login-options button {
+            background-color: #2b2b2b;
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 5px;
+            margin: 4px 2px;
+            width: 48%;
+            cursor: pointer;
+        }
+
+        .alternate-login-options button.google {
+            background-color: #4285f4;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>LET'S GET STARTED.</h1>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username">
+        </div>
+        <div class="input-group">
+            <label for="mobile-number">Mobile Number</label>
+            <select id="country-code">
+                <option value="+91">🇮🇳 +91</option>
+                <!-- Add other country codes as needed -->
+            </select>
+            <input type="text" id="mobile-number" placeholder="Enter your mobile number">
+        </div>
+        <button class="btn" onclick="storeUserData()">Proceed</button>
+        <div class="alternate-login-options">
+            <button>Email</button>
+            <button>Facebook</button>
+            <button class="google">Google</button>
+        </div>
+        <div class="footer">
+            <p>This website uses cookies to ensure you get the best experience on our website. <a href="#">Learn More</a></p>
+        </div>
+    </div>
+
+    <script>
+        function storeUserData() {
+            const username = document.getElementById('username').value;
+            const mobileNumber = document.getElementById('country-code').value + document.getElementById('mobile-number').value;
+            
+            if (username && mobileNumber) {
+                localStorage.setItem("username", username);
+                localStorage.setItem("mobileNumber", mobileNumber);
+                console.log(`Username: ${username}`);
+                console.log(`Mobile Number: ${mobileNumber}`);
+                alert('User data stored successfully!');
+            } else {
+                alert('Please enter both username and mobile number.');
+            }
+        }
+    </script>
+</body>
+</html>
